@@ -39,10 +39,10 @@ export class HospitalEntity{
     
     @OneToMany(() => Doctores, (doctor) => doctor.hospital)
     @JoinColumn({name:'doctor_id'})
-    collague: Colegios;
+    doctor: Doctores;
     
     @Column('varchar',{
-        name:'distrito',
+        name:'Hospital',
         comment: 'Nombre del Hospital',
     })
     hospital:string;
@@ -55,7 +55,7 @@ export class HospitalEntity{
  
     
     @Column('varchar',{
-        name:'numero_distrito',
+        name:'numero_telefono',
         comment:'Numero de telefono'
     })
     

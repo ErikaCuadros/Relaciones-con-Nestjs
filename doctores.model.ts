@@ -5,13 +5,13 @@ import { Column,
     ManyToOne, 
     PrimaryGeneratedColumn, 
     UpdateDateColumn } from "typeorm";
-import { DistritoEntity } from './distritoColegios.model';
+import { HospitalEntity } from './Hospital.model';
 
-@Entity('DistritoCO',{schema:'colegiosDistrit'})
+@Entity('Hospital',{schema:'doctorHospital'})
 
-export class Colegios{
+export class Doctores{
     //columnas de la entidad 
-    @PrimaryGeneratedColumn('NameCollague')
+    @PrimaryGeneratedColumn('Nombre')
     id:string;
     @CreateDateColumn({
         //objeto
@@ -38,29 +38,28 @@ export class Colegios{
     deleteAt:Date; //el nombre del atributo
     //Relationships
     //paramtrro de entrada =>
-    @ManyToOne(() => DistritoEntity, (distrit) => distrit.collague)
+    @ManyToOne(() => HospitalEntity, (hospital) => hospital.doctor)
     @JoinColumn({name:'colegios_id'})
-    distrit: CategoryEntity;
+    hospital: HospitalEntity;
 
     @Column('varchar',{
         name:'name',
         unique:true,
-        comment: 'Nombre del colegio',
+        comment: 'Nombre del Doctor',
     })
-    NameOfCollague:string;
+    NameOfDoctor:string;
 
     @Column('varchar',{
-        name:'ubicación',
+        name:'direccion',
         unique:true,
-        comment:'Ubicación del colegio',
+        comment:'Direccion',
     })
-    ubicacion:string;
+    direction:string;
     
     @Column('varchar',{
-        name:'typeofcollague',
+        name:'especialidad',
         unique:true,
-        comment:'Tipo de colegio'
+        comment:'Especialidad'
     })
-    typeOfColague:string;
-
+    especialidad:string;
 }
